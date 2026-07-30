@@ -86,5 +86,12 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtoRepository.findAllByDescricaoContainingIgnoreCase(descricao));
 
 	}
+	
+	//7. Método extra - Buscar produtos baratos (abaixo ou  igual a um valor) e ordenados por preço Pesquisa pela descrição
+	@GetMapping("/preco/{preco}")
+	public ResponseEntity<List<Produto>> findAllByPreco(@PathVariable int preco) {
+		return ResponseEntity.ok(produtoRepository.findAllByPrecoLessThanEqualOrderByPrecoAsc(preco));
+
+	}
 
 }
